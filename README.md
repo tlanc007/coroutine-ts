@@ -15,7 +15,7 @@ clang++ -std=c++14 -fcoroutines-ts -stdlib=libc++ blah.cpp
 The typical command-line options one will want are: `-fcoroutines-ts` `-stdlib=libc++`.  Also I tend to compile the programs either under c++14 or 1z (17): `-std=c++14` or `-std=c++1z`.
 
 ## generator.h
-In scouring for examples, I did come across several examples of a generator.h.  But when I tried using them, I would get compiler warnings like:
+In scouring for examples, I did come across several examples of a **generator.h**.  But when I tried using them, I would get compiler warnings like:
 
 ```
 error: 'promise_type' is required to declare the
@@ -29,6 +29,8 @@ The missing line that was needed to be able to work with exceptions and discard 
 ```
  void unhandled_exception() { std::terminate(); }
 ```
+
+Now, I can build examples using this **generator.h** file.
 
 ## Simple number generator
 **numberGen.cpp**: is a simple example of a number generator.
@@ -70,3 +72,7 @@ Output: (10 iterations)
 34
 55
 ```   
+
+## Introduction to coroutines CppCon 2016
+Under the directory `intro_coroutines_McNellis_CppCon_2016` are a number of examples that were built up during the presentation.  More information can be found in that directory's [ReadMe](https://github.com/tlanc007/coroutine-ts/blob/master/intro_coroutines_McNellis_CppCon_2016/Readme.md).
+ 
