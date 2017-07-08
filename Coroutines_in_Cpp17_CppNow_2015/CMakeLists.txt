@@ -20,7 +20,9 @@ set(GslIncludeDir ${source_dir}/include)
 
 include_directories(${GslIncludeDir})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -fcoroutines-ts")
+remove_definitions(-std=c++14)
+add_definitions(-std=c++1y)
+
 file( GLOB APP_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 foreach( srcfile ${APP_SRCS} )
     string( REPLACE ".cpp" "" srcname ${srcfile} )
