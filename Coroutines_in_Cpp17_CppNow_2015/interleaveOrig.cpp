@@ -1,7 +1,13 @@
 /*
  * Interleave Example from CppNow_2015 Coroutines in C++17
- * Note: This version runs both the non-coroutine and coutine calls.
- * This is the original version that Gor sent to me.
+ *
+ *  Note: This version example is included for historical reference.
+ *     For the most part this code is as Gor shared with me.  
+ *
+ *     At the time C++ didn't have a "standard" way of dealing with the
+ *     collection of ranges.  Which is the reason for the Range_t.
+ *     Today it is preferable to instead to use span.  The example: interleave.cpp
+ *     is one example of how to use gsl::span instead of the Range_t below.
  *
  * My only tweak was to change the generator to point to the version
  * in my repo. (Unlike MSVC++ clang/llvm doesn't include a generator). -- Tal 2017.07.05.
