@@ -7,11 +7,9 @@ ExternalProject_Add(
     gsl
     PREFIX ${CMAKE_BINARY_DIR}/gsl
     #PREFIX ${CMAKE_INSTALL_PREFIX}/gsl
-    #GIT_REPOSITORY https://github.com/Microsoft/GSL.git
-    GIT_REPOSITORY /Volumes/users/tal/Downloads/gsl
+    GIT_REPOSITORY https://github.com/Microsoft/GSL.git
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
-    #INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_directory
     INSTALL_COMMAND ""
     LOG_DOWNLOAD ON
 )
