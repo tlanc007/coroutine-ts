@@ -42,4 +42,5 @@ add_executable( ${TEST_NAME} fibonacciGenTest.cpp ../fibonacciGen.cpp)
 add_test( NAME ${TEST_NAME}
     COMMAND ${TEST_NAME})
 
+add_subdirectory(intro_coroutines_McNellis_CppCon_2016)
 
