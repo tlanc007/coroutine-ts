@@ -27,8 +27,10 @@ set(CatchIncludeDir ${source_dir}/include)
 
 include_directories(${CatchIncludeDir} ${PROJECT_SOURCE_DIR})
 
+add_definitions(-DAS_TEST)
+
 ##add_dependency(catch catch.hpp )
-add_executable( numberGenTest numberGenTest.cpp)
+add_executable( numberGenTest numberGenTest.cpp ../numberGen.cpp)
 add_test( NAME numberGenTest
     COMMAND numberGenTest)
 

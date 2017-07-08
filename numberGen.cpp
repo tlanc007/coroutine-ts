@@ -18,9 +18,11 @@ generator <unsigned long> numGen (unsigned long n)
     }
 }
 
+#ifndef AS_TEST
 int main ()
 {
     for (auto e: numGen (5) ) {
         std::cout << e << "\n";
     }
 }
+#endif // AS_TEST

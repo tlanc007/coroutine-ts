@@ -6,12 +6,7 @@
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
 
-generator <unsigned long> numGen (unsigned long n)
-{
-    for (auto i {0ul}; i < n; ++i) {
-        co_yield i;
-    }
-}
+extern generator <unsigned long> numGen (unsigned long n);
 
 TEST_CASE ("numberGenTest", "[numberGen]")
 {
@@ -25,7 +20,7 @@ R"(0
     };
 
     std::stringstream os {};
-    for (auto e: numGen (5) ) {
+    for (const auto& e: numGen (5) ) {
         os << e << "\n";
     }
 
