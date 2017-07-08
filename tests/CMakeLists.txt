@@ -30,12 +30,16 @@ include_directories(${CatchIncludeDir} ${PROJECT_SOURCE_DIR})
 add_definitions(-DAS_TEST)
 
 ##add_dependency(catch catch.hpp )
-add_executable( numberGenTest numberGenTest.cpp ../numberGen.cpp)
-add_test( NAME numberGenTest
-    COMMAND numberGenTest)
 
-add_executable( fibonacciGenTest fibonacciGenTest.cpp ../fibonacciGen.cpp)
-add_test( NAME fibonacciGenTest
-    COMMAND fibanacciGenTest)
+set(TEST_NAME numberGenTest)
+set(SRC_PATH ${TOP_SRC_PATH})
+add_executable( ${TEST_NAME} numberGenTest.cpp ../numberGen.cpp)
+add_test( NAME ${TEST_NAME}
+    COMMAND ${TEST_NAME})
+
+set(TEST_NAME fibonacciGenTest)
+add_executable( ${TEST_NAME} fibonacciGenTest.cpp ../fibonacciGen.cpp)
+add_test( NAME ${TEST_NAME}
+    COMMAND ${TEST_NAME})
 
 
