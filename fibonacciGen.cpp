@@ -43,6 +43,7 @@ generator <unsigned long> take_until (generator <unsigned long>& g, size_t senti
     }
 }
 
+#ifndef AS_TEST
 int main ()
 {
     constexpr auto Sentinel {10ul};
@@ -53,3 +54,4 @@ int main ()
         std::cout << e << "\n";
     }
 }
+#endif // AS_TEST

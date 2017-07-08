@@ -34,4 +34,8 @@ add_executable( numberGenTest numberGenTest.cpp ../numberGen.cpp)
 add_test( NAME numberGenTest
     COMMAND numberGenTest)
 
+add_executable( fibonacciGenTest fibonacciGenTest.cpp ../fibonacciGen.cpp)
+add_test( NAME fibonacciGenTest
+    COMMAND fibanacciGenTest)
+
 
