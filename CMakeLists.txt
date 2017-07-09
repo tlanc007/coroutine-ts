@@ -27,4 +27,7 @@ endforeach( srcfile ${APP_SRCS} )
 
 add_subdirectory(intro_coroutines_McNellis_CppCon_2016)
 add_subdirectory(Coroutines_in_Cpp17_CppNow_2015)
+
+## tests
+enable_testing()
 add_subdirectory(tests)
