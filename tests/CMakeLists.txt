@@ -43,4 +43,5 @@ add_test( NAME ${TEST_NAME}
     COMMAND ${TEST_NAME})
 
 add_subdirectory(intro_coroutines_McNellis_CppCon_2016)
+add_subdirectory(Coroutines_in_Cpp17_CppNow_2015)
 
