@@ -25,3 +25,7 @@ add_executable( ${TEST_NAME} resumable_thing2Test.cpp ${SRC_PATH}/resumable_thin
 add_test( NAME ${TEST_NAME}
 COMMAND ${TEST_NAME})
 
+set(TEST_NAME resumable_thing3Test)
+add_executable( ${TEST_NAME} resumable_thing3Test.cpp ${SRC_PATH}/resumable_thing3.cpp)
+add_test( NAME ${TEST_NAME}
+COMMAND ${TEST_NAME})
