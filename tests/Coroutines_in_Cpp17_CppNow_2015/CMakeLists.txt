@@ -4,8 +4,6 @@
 
 add_definitions(-DAS_TEST)
 
-##add_dependency(catch catch.hpp )
-
 set(SRC_PATH ${PROJECT_SOURCE_DIR}/Coroutines_in_Cpp17_CppNow_2015)
 
 include_directories(${SRC_PATH} ../include)
@@ -15,6 +13,8 @@ set(TEST_NAME interleaveTest)
 add_executable( ${TEST_NAME} interleaveTest.cpp)
 add_test( NAME ${TEST_NAME}
     COMMAND ${TEST_NAME})
+add_dependencies(${TEST_NAME} gsl )
+add_dependencies(${TEST_NAME} catch )
 
 #[==[
 set(TEST_NAME resumable_thing1Test)
