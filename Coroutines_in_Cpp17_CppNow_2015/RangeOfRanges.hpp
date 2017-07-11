@@ -4,31 +4,23 @@
 
 #pragma once
 
-template <typename RangeOfRanges>
-auto buildIteratorContainer (RangeOfRanges& rg)
+template <typename SpanT>
+auto dropFirst (SpanT& rng) -> SpanT
 {
-    using T = decltype (std::begin (rg[0]) );
-    using T = std::remove_reference_t<decltype (std::begin(rg[0]) ) >;
-    std::vector <T> v {};
-    std::for_each (std::begin (rg), std::end (rg), [&v](auto&& r) {
-        v.emplace_back (std::begin (r) );
-    } );
-
-    return v;
+    return rng.subspan (1);
 }
 
 template <typename RangeOfRanges>
-auto interleaveNonCoroutine (RangeOfRanges& rg) -> void {
-    auto rng {buildIteratorContainer (rg) };
-
+auto interleaveNonCoroutine (RangeOfRanges rg) -> void {
     while (1) {
         auto values_yielded_this_iteration {0u};
         auto i {0u};
-        for (auto&& e: rng) {
-            if (e != std::end (rg[i] ) ) {
-                std::cout << *e << ' ';
+        for (auto&& e: rg) {
+            auto front {std::begin (e) };
+            if (front != std::end (e) ) {
+                std::cout << *front << ' ';
+                e = dropFirst (e);
                 ++values_yielded_this_iteration;
-                ++e;
             }
             ++i;
         }
@@ -40,18 +32,17 @@ auto interleaveNonCoroutine (RangeOfRanges& rg) -> void {
 }
 
 template <typename RangeOfRanges>
-auto interleaveCoroutine (RangeOfRanges& rg) -> generator <int>
+auto interleaveCoroutine (RangeOfRanges rg) -> generator <int>
 {
-    auto rng {buildIteratorContainer (rg) };
-
     while (1) {
         auto values_yielded_this_iteration {0u};
         auto i {0u};
-        for (auto&& e: rng) {
-            if (e != std::end (rg[i] ) ) {
-                co_yield *e;
+        for (auto&& e: rg) {
+            auto front {std::begin (e) };
+            if (front != std::end (e) ) {
+                co_yield *front;
+                e = dropFirst (e);
                 ++values_yielded_this_iteration;
-                ++e;
             }
             ++i;
         }

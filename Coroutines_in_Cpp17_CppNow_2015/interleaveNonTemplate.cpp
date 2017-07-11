@@ -14,28 +14,22 @@
 
 using VecSpan = std::vector <gsl::span <int> >;
 
-auto buildIteratorContainer (VecSpan& rg) {
-    using T = decltype (std::begin (rg[0]) );
-    std::vector <T> v {};
-    std::for_each (std::begin (rg), std::end (rg), [&v](auto&& r) {
-        v.emplace_back (std::begin (r) );
-    } );
-
-    return v;
+auto dropFirst (gsl::span <int>& rng) -> gsl::span <int>
+{
+    return rng.subspan (1);
 }
 
-auto interleaveNonCoroutine (VecSpan& rg) -> void
+auto interleaveNonCoroutine (VecSpan rg) -> void
 {
-    auto rng {buildIteratorContainer (rg) };
-
     while (1) {
         auto values_yielded_this_iteration {0u};
         auto i {0u};
-        for (auto&& e: rng) {
-            if (e != std::end (rg[i] ) ) {
-                std::cout << *e << ' ';
+        for (auto&& e: rg) {
+            auto front {std::begin (e) };
+            if (front != std::end (e) ) {
+                std::cout << *front << ' ';
+                e = dropFirst (e);
                 ++values_yielded_this_iteration;
-                ++e;
             }
             ++i;
         }
@@ -46,18 +40,17 @@ auto interleaveNonCoroutine (VecSpan& rg) -> void
     }
 }
 
-auto interleaveCoroutine (VecSpan& rg) -> generator <int>
+auto interleaveCoroutine (VecSpan rg) -> generator <int>
 {
-    auto rng {buildIteratorContainer (rg) };
-
     while (1) {
         auto values_yielded_this_iteration {0u};
         auto i {0u};
-        for (auto&& e: rng) {
-            if (e != std::end (rg[i] ) ) {
-                co_yield *e;
+        for (auto&& e: rg) {
+            auto front {std::begin (e) };
+            if (front != std::end (e) ) {
+                co_yield *front;
+                e = dropFirst (e);
                 ++values_yielded_this_iteration;
-                ++e;
             }
             ++i;
         }
