@@ -10,7 +10,7 @@
 #include <vector>
 #include <gsl/gsl>
 
-#include "../generator.hpp"
+#include "generator.hpp"
 
 using VecSpan = std::vector <gsl::span <int> >;
 

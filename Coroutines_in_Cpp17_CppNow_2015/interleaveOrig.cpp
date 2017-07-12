@@ -18,7 +18,7 @@
 #include <vector>
 #include <iostream>
 
-#include "../generator.hpp"
+#include "generator.hpp"
 
 using namespace std::experimental;
 using namespace std;

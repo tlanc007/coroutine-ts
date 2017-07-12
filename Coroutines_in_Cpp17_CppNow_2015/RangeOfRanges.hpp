@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../generator.hpp"
+#include "generator.hpp"
 
 #pragma once
 
