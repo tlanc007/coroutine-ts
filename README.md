@@ -80,5 +80,9 @@ Under the directory `intro_coroutines_McNellis_CppCon_2016` are a number of exam
 Under the directory `Coroutines_in_Cpp17_CppNow_2015` are a number of examples from Gor Nishanov.
 
 
- ## Boost Microsoft Blog
- Under the directory `boost_ms` are a number of examples that were posted in a Microsoft blog about using Boost and coroutines.  More information can be found in that directory's [ReadMe](https://github.com/tlanc007/coroutine-ts/blob/master/boost_ms/ReadMe.md).
+## Boost Microsoft Blog
+ Under the directory `boost_ms` are a number of examples that were posted in a Microsoft blog about using Boost and coroutines.  
+
+**NOTE:** you will need to have at least Boost 1.60.0 installed to run these examples.
+ 
+More information can be found in that directory's [ReadMe](https://github.com/tlanc007/coroutine-ts/blob/master/boost_ms/ReadMe.md).
