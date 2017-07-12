@@ -11,8 +11,10 @@
 
 #include <experimental/coroutine>
 
+#define BOOST_NO_AUTO_PTR 1
 #define BOOST_THREAD_PROVIDES_FUTURE
 #define BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION // Enables future::then
+
 #include <boost/thread.hpp>
 
 #pragma once

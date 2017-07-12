@@ -17,7 +17,8 @@ if (Boost_FOUND)
     include_directories (SYSTEM ${Boost_INCLUDE_DIR} )
 endif ()
 
-include_directories (${SRC_PATH} ../include)
+set(TOP_PATH ${PROJECT_SOURCE_DIR})
+include_directories (${SRC_PATH} ${TOP_PATH}/include ../include)
 
 file( GLOB APP_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 foreach( srcfile ${APP_SRCS} )
