@@ -26,6 +26,7 @@ endforeach( srcfile ${APP_SRCS} )
 
 add_subdirectory(intro_coroutines_McNellis_CppCon_2016)
 add_subdirectory(Coroutines_in_Cpp17_CppNow_2015)
+add_subdirectory(boost_ms)
 
 Include(ExternalProject)
 ExternalProject_Add(
