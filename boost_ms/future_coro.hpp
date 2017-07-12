@@ -49,4 +49,29 @@ struct std::experimental::coroutine_traits<boost::future<R>, Args...> {
     }; 
 };
 
+template <typename R> auto operator co_await(boost::future<R> &&f) {
+    struct Awaiter {
+        boost::future<R> &&input;
+        boost::future<R> output;
 
+        // better for app; may not be best for servers
+        bool await_ready() {
+            if (input.is_ready () ) {
+                output = std::move (input);
+                return true;
+            }
+            return false;
+        }
+        auto await_resume() { return output.get(); }
+        void await_suspend(std::experimental::coroutine_handle<> coro) {
+            input.then([this, coro](auto result_future) {
+                this->output = std::move(result_future);
+                /* NOTE: For this to work I had to change the
+                 experimental/coroutine resume() to be const! -- 2017-07-11
+                 */
+                coro.resume();
+            });
+        }
+    };
+    return Awaiter{static_cast<boost::future<R>&&>(f)};
+}
