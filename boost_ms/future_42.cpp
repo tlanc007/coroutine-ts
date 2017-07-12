@@ -22,7 +22,7 @@ using namespace boost::asio;
 int main() {
     io_service io;
     promise<int> p;
-    auto f = p.get_future();
+    auto f {p.get_future() };
 
     io.post([&] { p.set_value(42); });
     io.run();

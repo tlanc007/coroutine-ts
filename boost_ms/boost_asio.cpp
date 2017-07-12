@@ -25,5 +25,5 @@ int main() {
 
     puts("waiting for a tick");
     io.run(); 
-};
+}
 

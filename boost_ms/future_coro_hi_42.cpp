@@ -27,5 +27,3 @@ int main()
     f().get();
     printf("%d\n", g().get());
 }
-
-
