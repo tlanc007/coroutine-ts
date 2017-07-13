@@ -64,11 +64,8 @@ template <typename R> auto operator co_await(boost::future<R> &&f) {
         }
         auto await_resume() { return output.get(); }
         void await_suspend(std::experimental::coroutine_handle<> coro) {
-            input.then([this, coro](auto result_future) {
+            input.then([this, coro](auto result_future) mutable {
                 this->output = std::move(result_future);
-                /* NOTE: For this to work I had to change the
-                 experimental/coroutine resume() to be const! -- 2017-07-11
-                 */
                 coro.resume();
             });
         }

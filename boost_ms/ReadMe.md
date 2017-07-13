@@ -16,9 +16,7 @@ This is a coroutine version of the future_42 example.  This version goes a littl
 This example also introduces **future_coro.hpp** which contains the specializations to extend boost::future.
 
 ## future_coawait
-This example extends **future_coro.hpp** by adding co_await to boost::future.  This is making use of the Awaiter pattern.
-
-**WARNING**: In order to make the `co_await` adapter work.  I had to change clang's `experimental/coroutine` to make `resume()` *const*.
+This example extends **future_coro.hpp** by adding `co_await` to boost::future.  This is making use of the Awaiter pattern.  Note: added mutable to the lambda in `await_suspend`() in the co_await function.
 
 **NOTE**: The blog gives some interesting background on the implementation of **await_suspend**().  I opted for the application side efficiency.  But if this was for a server, then the other implementation would be the way to go.
 

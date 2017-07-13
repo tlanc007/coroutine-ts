@@ -24,7 +24,7 @@ auto async_await(boost::asio::system_timer &t, std::chrono::duration<R, P> d) {
         }
         void await_suspend(std::experimental::coroutine_handle<> coro) {
             t.expires_from_now(d);
-            t.async_wait([this, coro](auto ec) {
+            t.async_wait([this, coro](auto ec) mutable {
                 this->ec = ec;
                 coro.resume();
             }); 
