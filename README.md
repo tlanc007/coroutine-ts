@@ -6,6 +6,16 @@ With clang/llvm 5.0 there is support for the experimental coroutines.  But it ha
 
 The following are my notes on what I have done to get some examples to work using the experimental/coroutine header file.
 
+The repo makes use of CMake to set up the build environment.
+
+# Dependencies
+  * gsl -- for the Coroutines in Cpp17 examples 
+    * CMake will download it for you
+  * Catch -- for the tests folder
+    * CMake will download it for you
+  * Boost 1.60.0 -- for the boost_ms folder
+     * You will need to manually download and install this yourself.
+
 # Examples
 
 ## compiler command line
