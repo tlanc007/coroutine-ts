@@ -8,6 +8,9 @@ The following are my notes on what I have done to get some examples to work usin
 
 The repo makes use of CMake to set up the build environment.
 
+For a more through repo on coroutines check out:
+[cppcoro](https://github.com/lewissbaker/cppcoro.git) a coroutine library based on the coroutine-ts.
+
 # Dependencies
   * gsl -- for the Coroutines in Cpp17 examples 
     * CMake will download it for you
