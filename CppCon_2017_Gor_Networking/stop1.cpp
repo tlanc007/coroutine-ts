@@ -212,9 +212,9 @@ auto better_async_wait(std::experimental::net::basic_waitable_timer<Clock> &t,
 std::future<void> noisy_clock(system_timer &timer) {
   try {
     for (;;) {
-      co_await async_wait(timer, 1s);
+      co_await better_async_wait(timer, 1s);
       puts("tick");
-      co_await async_wait(timer, 1s);
+      co_await better_async_wait(timer, 1s);
       puts("tock");
     }
   }
