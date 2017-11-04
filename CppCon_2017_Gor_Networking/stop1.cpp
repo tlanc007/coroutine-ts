@@ -79,7 +79,7 @@ int main() {
     auto f = noisy_clock(timer);
     system_timer fast_timer(io, 1s);
       //original run didn't have this line to get tick tock ...
-    fast_timer.async_wait([&](auto){io.stop();});
+    fast_timer.async_wait([&](auto){timer.cancel();});
     io.run();
     puts("done");
   }
