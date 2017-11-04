@@ -45,3 +45,13 @@ set(Bin stop1)
 set(Source ${Bin}.cpp)
 add_executable (${Bin} ${Source})
 target_link_libraries(${Bin} boost_system boost_thread)
+
+set(Bin over1)
+set(Source ${Bin}.cpp)
+add_executable (${Bin} ${Source})
+target_link_libraries(${Bin} boost_system boost_thread)
+
+set(Bin over2)
+set(Source ${Bin}.cpp)
+add_executable (${Bin} ${Source})
+target_link_libraries(${Bin} boost_system boost_thread)
