@@ -78,6 +78,8 @@ int main() {
     system_timer timer(io);
     auto f = noisy_clock(timer);
     system_timer fast_timer(io, 1s);
+      //original run didn't have this line to get tick tock ...
+    fast_timer.async_wait([&](auto){io.stop();});
     io.run();
     puts("done");
   }
@@ -201,7 +203,7 @@ auto better_async_wait(std::experimental::net::basic_waitable_timer<Clock> &t,
 
     void await_suspend(std::experimental::coroutine_handle<> coro) {
       t.expires_after(d);
-      t.async_wait(Callback{this, coro});
+        t.async_wait([this, coro](auto ec) mutable {this->ec = ec; coro.resume (); } );
     }
   };
   return Awaiter{ t, d };
@@ -210,9 +212,9 @@ auto better_async_wait(std::experimental::net::basic_waitable_timer<Clock> &t,
 std::future<void> noisy_clock(system_timer &timer) {
   try {
     for (;;) {
-      co_await better_async_wait(timer, 1s);
+      co_await async_wait(timer, 1s);
       puts("tick");
-      co_await better_async_wait(timer, 1s);
+      co_await async_wait(timer, 1s);
       puts("tock");
     }
   }
