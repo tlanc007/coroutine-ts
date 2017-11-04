@@ -14,10 +14,6 @@ set(Bin 01_simpleTimer)
 set(Source ${Bin}.cpp)
 add_executable (${Bin} ${Source})
 
-set(Bin 02_myserver)
-set(Source ${Bin}.cpp)
-add_executable (${Bin} ${Source})
-
 set(Bin first)
 set(Source ${Bin}.cpp)
 add_executable (${Bin} ${Source})
