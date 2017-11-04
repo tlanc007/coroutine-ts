@@ -203,7 +203,7 @@ auto better_async_wait(std::experimental::net::basic_waitable_timer<Clock> &t,
 
     void await_suspend(std::experimental::coroutine_handle<> coro) {
       t.expires_after(d);
-        t.async_wait([this, coro](auto ec) mutable {this->ec = ec; coro.resume (); } );
+      t.async_wait(Callback{this, coro});
     }
   };
   return Awaiter{ t, d };
