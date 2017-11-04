@@ -6,7 +6,7 @@ project (CppCon2017liveNetworking)
 include_directories ($ENV{NETWORKING_TS}/include)
 
 remove_definitions(-std=c++14)
-add_definitions(-std=c++1z -fcoroutines-ts -O3)
+add_definitions(-std=c++1z -fcoroutines-ts -O2)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
@@ -39,7 +39,7 @@ target_link_libraries(${Bin} boost_system boost_thread)
 set(Bin hard2)
 set(Source ${Bin}.cpp)
 add_executable (${Bin} ${Source})
-target_link_libraries(${Bin} boost_system boost_thread)
+target_link_libraries(${Bin} boost_system boost_thread c++)
 
 set(Bin stop1)
 set(Source ${Bin}.cpp)
